@@ -1,93 +1,153 @@
-# MIA-VIRT-DATA-PT-11-2022-U-B
+Background
+Now that Bobby has proven his SQL chops, his manager has given both of you two more assignments: determine the number of retiring employees per title, and identify employees who are eligible to participate in a mentorship program. Then, you’ll write a report that summarizes your analysis and helps prepare Bobby’s manager for the “silver tsunami” as many current employees reach retirement age.
 
+What You're Creating
+This new assignment consists of two technical analysis deliverables and a written report. You will submit the following:
 
+Deliverable 1: The Number of Retiring Employees by Title
+Deliverable 2: The Employees Eligible for the Mentorship Program
+Deliverable 3: A written report on the employee database analysis (README.md)
+Files
+Use the following link to download the Challenge starter code.
 
-## Getting started
+Download challenge starter codeLinks to an external site.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+Deliverable 1: The Number of Retiring Employees by Title (50 points)
+Deliverable 1 Instructions
+Using the ERD you created in this module as a reference and your knowledge of SQL queries, create a Retirement Titles table that holds all the titles of employees who were born between January 1, 1952 and December 31, 1955. Because some employees may have multiple titles in the database—for example, due to promotions—you’ll need to use the DISTINCT ON statement to create a table that contains the most recent title of each employee. Then, use the COUNT() function to create a table that has the number of retirement-age employees by most recent job title. Finally, because we want to include only current employees in our analysis, be sure to exclude those employees who have already left the company.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+REWIND
+For this deliverable, you’ve already done the following in this module:
 
-## Add your files
+Lesson 7.3.1: Create new tables with the INTO statement
+Lesson 7.3.1: Export a table as a CSV file
+Lesson 7.3.1: Filter queries with the WHERE clause
+Lesson 7.3.3: Use the INNER JOIN clause to join two tables on a primary key
+Lesson 7.3.3: Use the ON () clause
+Lesson 7.3.3: Use an alias instead of a full table name
+Lesson 7.3.4: Use the ORDER BY clause
+Lesson 7.3.4: Use the COUNT() function to retrieve the total number of rows that matches a specified criteria
+Create a SQL file in the Queries folder of your Pewlett-Hackard-Analysis GitHub folder, and name it Employee_Database_challenge.sql.
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+Follow the instructions below to complete Deliverable 1.
 
-```
-cd existing_repo
-git remote add origin https://miami.bootcampcontent.com/Miami-Boot-Camp/MIA-VIRT-DATA-PT-11-2022-U-B.git
-git branch -M main
-git push -uf origin main
-```
+Retrieve the emp_no, first_name, and last_name columns from the Employees table.
+Retrieve the title, from_date, and to_date columns from the Titles table.
+Create a new table using the INTO clause.
+Join both tables on the primary key.
+Filter the data on the birth_date column to retrieve the employees who were born between 1952 and 1955. Then, order by the employee number.
+Export the Retirement Titles table from the previous step as retirement_titles.csv and save it to your Data folder in the Pewlett-Hackard-Analysis folder.
+Before you export your table, confirm that it looks like this image:
+The Retirement Titles table with employee number, first name, last name, title, the title from and to dates, and ordered by employee number.
 
-## Integrate with your tools
+Note: There are duplicate entries for some employees because they have switched titles over the years. Use the following instructions to remove these duplicates and keep only the most recent title of each employee.
 
-- [ ] [Set up project integrations](https://miami.bootcampcontent.com/Miami-Boot-Camp/MIA-VIRT-DATA-PT-11-2022-U-B/-/settings/integrations)
+Copy the query from the Employee_Challenge_starter_code.sql and add it to your Employee_Database_challenge.sql file.
+Retrieve the employee number, first and last name, and title columns from the Retirement Titles table.
+These columns will be in the new table that will hold the most recent title of each employee.
+Use the DISTINCT ON statement to retrieve the first occurrence of the employee number for each set of rows defined by the ON () clause.
+If you’d like a hint on using the DISTINCT ON statement, that’s totally okay. If not, that’s great too. You can always revisit this later if you change your mind.
 
-## Collaborate with your team
+HINT
+Exclude those employees that have already left the company by filtering on to_date to keep only those dates that are equal to '9999-01-01'.
+Create a Unique Titles table using the INTO clause.
+Sort the Unique Titles table in ascending order by the employee number and descending order by the last date (i.e., to_date) of the most recent title.
+Export the Unique Titles table as unique_titles.csv and save it to your Data folder in the Pewlett-Hackard-Analysis folder.
+Before you export your table, confirm that it looks like this image:
+The unique titles table is ascending ordered by employee number and descending order by the most recent title date.
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+Write another query in the Employee_Database_challenge.sql file to retrieve the number of employees by their most recent job title who are about to retire.
+First, retrieve the number of titles from the Unique Titles table.
+Then, create a Retiring Titles table to hold the required information.
+Group the table by title, then sort the count column in descending order.
+Export the Retiring Titles table as retiring_titles.csv and save it to your Data folder in the Pewlett-Hackard-Analysis folder.
+Before you export your table, confirm that it looks like this image:
+The retiring title table ordered by title and sorted by count in descending order.
 
-## Test and Deploy
+Save your Employee_Database_challenge.sql file in your Queries folder in the Pewlett-Hackard folder.
+Deliverable 1 Requirements
+You will earn a perfect score for Deliverable 1 by completing all requirements below:
 
-Use the built-in continuous integration in GitLab.
+A query is written and executed to create a Retirement Titles table for employees who are born between January 1, 1952 and December 31, 1955. (10 pt)
+The Retirement Titles table is exported as retirement_titles.csv. (5 pt)
+​A query is written and executed to create a Unique Titles table that contains the employee number, first and last name, and most recent title. (15 pt)
+​The Unique Titles table is exported as unique_titles.csv. (5 pt)
+A query is written and executed to create a Retiring Titles table that contains the number of titles filled by employees who are retiring. (10 pt)
+The Retiring Titles table is exported as retiring_titles.csv. (5 pt)
+Deliverable 2: The Employees Eligible for the Mentorship Program (30 points)
+Deliverable 2 Instructions
+Using the ERD you created in this module as a reference and your knowledge of SQL queries, create a mentorship-eligibility table that holds the current employees who were born between January 1, 1965 and December 31, 1965.
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+REWIND
+For this deliverable, you’ve already done the following in this module:
 
-***
+Lesson 7.3.1: Create new tables with the INTO statement
+Lesson 7.3.1: Export a table as a CSV file
+Lesson 7.3.1: Filter queries with the WHERE clause
+Lesson 7.3.3: Use the INNER JOIN clause to join two tables on a similar column
+Lesson 7.3.3: Use the ON () clause
+Lesson 7.3.3: Use an alias instead of a full table name
+Lesson 7.3.4: Use the ORDER BY clause
+In the Employee_Database_challenge.sql file, write a query to create a Mentorship Eligibility table that holds the employees who are eligible to participate in a mentorship program.
 
-# Editing this README
+Retrieve the emp_no, first_name, last_name, and birth_date columns from the Employees table.
+Retrieve the from_date and to_date columns from the Department Employee table.
+Retrieve the title column from the Titles table.
+Use a DISTINCT ON statement to retrieve the first occurrence of the employee number for each set of rows defined by the ON () clause.
+Create a new table using the INTO clause.
+Join the Employees and the Department Employee tables on the primary key.
+Join the Employees and the Titles tables on the primary key.
+Filter the data on the to_date column to all the current employees, then filter the data on the birth_date columns to get all the employees whose birth dates are between January 1, 1965 and December 31, 1965.
+Order the table by the employee number.
+Export the Mentorship Eligibility table as mentorship_eligibilty.csv and save it to your Data folder in the Pewlett-Hackard-Analysis folder.
+Before you export your table, confirm that it looks like this image:
+The mentorship table with the employee number, first and last name, birth date, from and to date for the current title, ordered by employee number.
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!).  Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+Deliverable 2 Requirements
+You will earn a perfect score for Deliverable 2 by completing all requirements below:
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+A query is written and executed to create a Mentorship Eligibility table for current employees who were born between January 1, 1965 and December 31, 1965. (25 pt)
+The Mentorship Eligibility table is exported and saved as mentorship_eligibilty.csv. (5 pt)
+Deliverable 3: A written report on the employee database analysis (20 points)
+Deliverable 3 Instructions
+For this part of the Challenge, you’ll write a report to help the manager prepare for the upcoming "silver tsunami."
 
-## Name
-Choose a self-explaining name for your project.
+The analysis should contain the following:
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+Overview of the analysis: Explain the purpose of this analysis.
+Results: Provide a bulleted list with four major points from the two analysis deliverables. Use images as support where needed.
+Summary: Provide high-level responses to the following questions, then provide two additional queries or tables that may provide more insight into the upcoming "silver tsunami."
+How many roles will need to be filled as the "silver tsunami" begins to make an impact?
+Are there enough qualified, retirement-ready employees in the departments to mentor the next generation of Pewlett Hackard employees?
+Deliverable 3 Requirements
+Structure, Organization, and Formatting (6 points)
+The written analysis has the following structure, organization, and formatting:
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+There is a title, and there are multiple sections. (2 pt)
+Each section has a heading and subheading. (2 pt)
+Links to images are working and displayed correctly. (2 pt)
+Analysis (14 points)
+The written analysis has the following:
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+Overview of the analysis:
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+The purpose of the new analysis is well defined. (3 pt)
+Results:
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+There is a bulleted list with four major points from the two analysis deliverables. (6 pt)
+Summary:
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+The summary addresses the two questions and contains two additional queries or tables that may provide more insight. (5 pt)
+Submission
+Once you’re ready to submit, make sure to check your work against the rubric to ensure you are meeting the requirements for this Challenge one final time. It’s easy to overlook items when you’re in the zone!
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+As a reminder, the deliverables for this Challenge are as follows:
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+Deliverable 1: The Number of Retiring Employees by Title
+Deliverable 2: The Employees Eligible for the Mentorship Program
+Deliverable 3: A written report on the employee database analysis (README.md)
+Upload the following to your Pewlett-Hackard-Analysis GitHub repository:
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+The Queries folder with the Employee_Database_challenge.sql file
+The Data folder with the retirement_titles.csv, unique_titles.csv, retiring_titles.csv, and mentorship_eligibilty.csv files
 
